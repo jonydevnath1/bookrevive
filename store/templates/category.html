@@ -1,0 +1,65 @@
+<!-- Header & Footer content -->
+{% extends 'base.html' %}
+
+        {% block content %}
+
+            <section class="py-5">
+                <div class="container px-4 px-lg-5 mt-5">
+                    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                        {% for product in products %}
+
+                        <div class="wrapper">
+                            <div class="cart_container">
+                                <div class="top">
+                                    <a href="{% url 'product' product.id %}"> 
+                                        <img src="{{ product.image.url }}" alt="..." />
+                                    </a>
+                                </div>
+                            
+                                <div class="bottom">
+                                    <div class="left">
+                                        <div class="details">
+                                            <!-- Product name-->
+                                            <a href="{% url 'product' product.id %}">
+                                                <h6 class="fw-bolder">{{ product.name }}</h6>
+                                            </a>
+                                            <!-- Product price-->
+                                            {% if product.is_sale %}
+                                            <strike>TK.{{ product.price }} </strike> &nbsp;
+                                                <p>TK.{{ product.sale_price }}</p>
+                                            {% else %}
+                                                <p>Tk.{{ product.price }}</p>
+                                            {% endif %}
+                                        </div>
+
+                                        <div class="buy" id="add_cart" data-product-id="{{ product.id }}">
+                                        <i class="material-icons">add_shopping_cart</i>
+                                        </div>
+
+                                        {% comment %} <div class="buy">
+                                        <button type="button" value="{{ product.id }}" id="add_cart">
+                                            <i class="material-icons">add_shopping_cart</i>
+                                        </button>
+
+                                        </div> {% endcomment %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Sale badge-->
+                            {% if product.is_sale %}
+                                <div class="badge bg-dark text-white position-absolute" style="top: 18px; right: 10px">Sale</div>
+                            {% endif %}
+
+                        </div>
+                                    
+                        {% endfor %}
+        
+                    </div>  
+                </div>  
+            </section>
+
+        {% endblock %}
+

@@ -1,0 +1,391 @@
+* {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+html, body {
+  background-color: #ffffff;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.bg-dark {
+  background-color: #000 !important;
+}
+
+.bg-primary,
+.btn-primary {
+  background-color: #db4444 !important;
+  border: 0px !important;
+}
+
+.text-primary {
+  color: #db4444 !important;
+}
+
+.btn-outline-primary {
+  background-color: transparent !important;
+  color: #db4444 !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: #db4444 !important;
+  color: #ffffff !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: #000 !important;
+}
+
+a:hover {
+  color: #db4444 !important;
+  background-color: transparent !important;
+}
+
+a:active {
+  background-color: none !important;
+}
+
+.btn-primary:hover {
+  background-color: #db4444 !important;
+  opacity: 0.8 !important;
+}
+
+.btn-primary:active {
+  background-color: #db4444 !important;
+}
+
+/* Sidebar Menu */
+.sidebar {
+  width: 250px;
+  border-right: 1px solid #e0e0e0;
+  padding: 15px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  color: #000;
+  font-weight: 500;
+}
+
+.sidebar a:hover {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.sidebar a .bi-chevron-right {
+  float: right;
+}
+
+/* Active Class Styling */
+.sidebar .list-group-item.active,
+.list-group-item.active {
+  background-color: #f8f9fa !important;
+  color: #dc3545 !important;
+  font-weight: bold !important;
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+  color: #dc3545;
+}
+
+.list-group-item:active {
+  background-color: #e9ecef;
+  color: #dc3545;
+}
+
+/* Carousel */
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+/* Footer */
+.bg {
+  background-color: #0000007a;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-icon {
+  background-color: #000000;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-icon i {
+  font-size: 36px;
+  color: white;
+}
+
+.feature-text {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.feature-description {
+  color: #666;
+}
+
+/* Checkout Form */
+.form-control {
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 1px solid #dc3545;
+}
+
+.btn-outline-danger {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+}
+
+.card-body img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Profile and Account Pages */
+.list-group-item {
+  border: none;
+}
+
+.text-muted {
+  color: #adb5bd !important;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+/* Messages */
+.right-side-absolute {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+}
+
+/* Cart */
+.wrapper {
+  width: 300px;
+  height: 500px;
+  background: white;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0;
+  transform: scale(0.95);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.wrapper:hover {
+  transform: scale(1);
+  box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.cart_container {
+  width: 100%;
+  height: 100%;
+}
+
+.top img {
+  height: 80%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bottom {
+  display: flex;
+  height: 20%;
+  background: #f4f4f4;
+}
+
+.left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.details h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+.details p {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.buy {
+  float: right;
+  width: calc(30% - 2px);
+  height: 100%;
+  background: #f1f1f1;
+  transition: background 0.5s;
+  border-left: solid thin rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buy i {
+  font-size: 30px;
+  padding: 30px;
+  color: #254053;
+  transition: transform 0.5s, color 0.5s;
+  cursor: pointer;
+}
+
+.buy:hover {
+  background: #A6CDDE;
+}
+
+.buy:hover i {
+  transform: translateY(5px);
+  color: #00394B;
+}
+
+/* dashboad */
+
+.order-card {
+  color: #fff;
+}
+
+.bg-c-blue {
+  background: linear-gradient(45deg,#4099ff,#73b4ff);
+}
+
+.bg-c-green {
+  background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+}
+
+.bg-c-yellow {
+  background: linear-gradient(45deg,#FFB64D,#ffcb80);
+}
+
+.bg-c-pink {
+  background: linear-gradient(45deg,#FF5370,#ff869a);
+}
+
+
+.card {
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+  box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
+  border: none;
+  margin-bottom: 30px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.card .card-block {
+  padding: 25px;
+}
+
+.order-card i {
+  font-size: 26px;
+}
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+/* orders */
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.badge-paid {
+  background-color: #2a9d8f;
+  color: white;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.badge-fulfilled {
+  background-color: #264653;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.order-details img {
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+.order-details .product-info {
+  display: flex;
+  align-items: center;
+}
+.order-details .product-details {
+  margin-left: 10px;
+}
+.order-summary, .customer-info {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+}
+.order-summary h6, .customer-info h6 {
+  margin-bottom: 20px;
+}

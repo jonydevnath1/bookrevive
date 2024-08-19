@@ -1,0 +1,90 @@
+<!-- Header & Footer content -->
+{% extends 'payment/admin_base.html' %}
+
+{% block content %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-xl-3">
+                    <div class="card bg-c-blue order-card">
+                        <div class="card-block">
+                            <h6 class="m-b-20">Total Orders</h6>
+                            <h2 class="text-right mt-3"><i class="fa fa-cart-plus f-left me-2"></i><span>{{ total_orders }}</span></h2>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-xl-3">
+                    <div class="card bg-c-green order-card">
+                        <div class="card-block">
+                            <h6 class="m-b-20">Active Orders</h6>
+                            <h2 class="text-right mt-3"><i class="fa fa-rocket f-left me-2"></i><span>{{ active_orders }}</span></h2>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-xl-3">
+                    <div class="card bg-c-yellow order-card">
+                        <div class="card-block">
+                            <h6 class="m-b-20">Completed Orders</h6>
+                            <h2 class="text-right mt-3"><i class="fa fa-refresh f-left me-2"></i><span>{{ completed_orders }}</span></h2>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 col-xl-3">
+                    <div class="card bg-c-pink order-card">
+                        <div class="card-block">
+                            <h6 class="m-b-20">Total Earned</h6>
+                            <h2 class="text-right mt-3"><i class="fa fa-credit-card f-left me-2"></i><span>{{ total_amount_paid }} TK.</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Recent Orders</h2>
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Date Ordered</th>
+                            <th scope="col">Payment Methods</th>
+                            <th scope="col">Payment Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in orders %}
+                            <tr>
+                                <th scope="row"><a class="text-decoration-none text-dark" href="{% url 'orders' item.id %}">#{{ item.id }}</a></th>
+                                <td>{{ item.full_name }}</td>
+                                <td>{{ item.phone }}</td>
+                                <td>TK. {{ item.amount_paid }}</td>
+                                <td>{{ item.date_ordered }}</td>
+                                <td>{{ item.payment_method }}</td>
+                                <td>{{ item.payment_status }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        </table>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+</div> <!-- d-flex -->
+
+</div> <!-- container -->
+</section> <!-- container -->
+
+{% endblock %}

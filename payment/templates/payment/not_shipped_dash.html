@@ -1,0 +1,43 @@
+<!-- Header & Footer content -->
+{% extends 'payment/admin_base.html' %}
+
+      {% block content %}
+      <section class="p-5">
+        <h3>Un-Shipped Items</h3>
+        <table class="table table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Total</th>
+                <th scope="col">Date Ordered</th>
+                <th scope="col">Payment Methods</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">Shipping</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in orders %}
+                <tr>
+                    <th scope="row"><a class="text-decoration-none text-dark" href="{% url 'orders' item.id %}">#{{ item.id }}</a></th>
+                    <td>{{ item.full_name }}</td>
+                    <td>{{ item.phone }}</td>
+                    <td>TK. {{ item.amount_paid }}</td>
+                    <td>{{ item.date_ordered }}</td>
+                    <td>{{ item.payment_method }}</td>
+                    <td>{{ item.payment_status }}</td>
+                    <td>
+                      <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" Name="shipping_status" value="true">
+                        <input type="hidden" Name="num" value="{{ item.id }}">
+                        <button type="submit" class="btn btn-success btn-sm">Shipped</button>
+                      </form>
+                    </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </section>
+      {% endblock %}

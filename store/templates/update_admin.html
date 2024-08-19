@@ -1,0 +1,33 @@
+<!-- Header & Footer content -->
+{% extends 'payment/admin_base.html' %}
+
+        {% block content %}
+
+            <section class="container">
+                <div class="row">
+                    <!-- Profile Edit Form -->
+                    <div class="col-md-8">
+                        <div class="card border-0">
+                            <div class="card-body">
+                                <h4 class="fw-bold text-danger mb-4">Edit Your Profile</h4>
+                                <form method="POST" action="{% url 'update_admin' %}">
+                                    <div class="row mb-3">
+                                        {% csrf_token %}
+                                        {{ user_form.as_p }}
+
+                                    </div>
+                                    <div class="d-flex justify-content-end mt-5">
+                                        
+                                        <a href="{% url 'update_admin_pwd'%}" class="btn btn-danger me-2 text-white">Change Password</a>
+                                        <button id="Cancel" type="button" class="btn btn-outline-secondary me-2">Cancel</button>
+                                        <button type="submit" class="btn btn-danger">Save Changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        {% endblock %}

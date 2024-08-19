@@ -1,0 +1,86 @@
+<!-- Header & Footer content -->
+{% extends 'base.html' %}
+
+        {% block content %}
+
+        <section class="my-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Billing Details Form -->
+                    <div class="col-md-6">
+                        <h4 class="fw-bold">Shipping Details</h4>
+
+                        <form id="shippingForm" method="POST" action="{% url 'process_order' %}">
+
+                            {% csrf_token %}
+                            {{ shipping_form.as_p }}
+
+                        </form>
+
+                    </div>
+
+                    <!-- Order Summary and Payment Options -->
+                    <div class="col-md-5">
+                        <div class="card border-0 p-5">
+                            <div class="card-body">
+
+                                {% for product in cart_products %}
+
+                                    <div class="d-flex justify-content-between mb-4">
+                                        <div>
+                                            <img src="{{ product.image.url }}"
+                                                alt="LCD Monitor" width="50">
+                                            <span class="ms-4">{{ product.name }}</span>
+                                        </div>
+
+                                        <span> *
+                                            {% for key, value in quantities.items %}
+                                                {% if key == product.id|slugify %}
+                                                <td> {{ value }} </td>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </span>
+
+                                        {% if product.is_sale %}
+                                            <span> TK.{{ product.sale_price }} </span>
+                                        {% else %}
+                                            <span> Tk.{{ product.price }} </span>
+                                        {% endif %}
+
+                                    </div>
+                            
+                                {% endfor %}
+
+                                <hr>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Subtotal:</span>
+                                    <span>TK.{{ subtotals }}</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between mb-2">
+                                    <span>Shipping:</span>
+                                    <span>{{ shipping_fee }}</span>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between mb-4">
+                                    <span>Total:</span>
+                                    <span>TK.{{ totals }}</span>
+                                </div>
+
+                                <button id="placeOrder" type="submit" class="btn btn-danger w-100 mt-4">Place Order</button>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.getElementById('placeOrder').addEventListener('click', function() {
+                document.getElementById('shippingForm').submit();
+            });
+        </script>   
+
+        {% endblock %}
+

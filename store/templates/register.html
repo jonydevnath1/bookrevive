@@ -1,0 +1,31 @@
+<!-- Header & Footer content -->
+{% extends 'base.html' %}
+
+        {% block content %}
+        
+        <div class="container mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-5 offset-md-3">
+                    <div class="bg-white p-4 p-sm-5 w-100 max-w-md">
+                        <h2 class="text-2xl fw-bold mb-4 text-primary">Create an account</h2>
+                        <p class="mb-4 text-muted">Enter your details below</p>
+            
+                        <form method="POST" action="{% url 'register' %}">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                           
+                            <div class="mb-3">
+                                <button type="submit" class="w-100 btn btn-primary text-white fw-bold">SIGNUP</button>
+                            </div>
+                            <p class="text-center text-muted">Have an account already? <a href="{% url 'login' %}"
+                                    class="text-decoration-none">Login</a>
+                            </p>
+                        </form>
+            
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% comment %} j67364$#6$e6s\2 {% endcomment %}

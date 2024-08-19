@@ -1,0 +1,77 @@
+<!-- Header & Footer content -->
+{% extends 'base.html' %}
+
+    {% block content %}
+
+        <section class="my-5">
+            <div class="container">
+                <div class="row">
+                    <!-- Sidebar Menu -->
+                    <div class="col-md-3">
+                        <div class="list-group">
+                            <h6 class="fw-bold">Manage My Account</h6>
+                            <a href="{% url 'update_user'%}" class="list-group-item list-group-item-action text-muted"
+                                aria-current="true">
+                                My Profile
+                            </a>
+                            <a href="{% url 'update_info'%}" class="list-group-item list-group-item-action text-muted">Address
+                                Book</a>
+                            <a href="{% url 'update_password'%}" class="list-group-item list-group-item-action text-muted">Change
+                                Password</a>
+                            <a href="{% url 'orders'%}" class="list-group-item list-group-item-action active">My Orders</a>
+                        </div>
+                    </div>
+
+                    <!-- Profile Edit Form -->
+                    <div class="col-md-8">
+                        <div class="card border-0">
+                            <div class="card-body">
+                                <h4 class="fw-bold text-danger mb-4">Your Orders</h4>
+
+                                <table class="table table-hover">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th scope="col">Order</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Ship To</th>
+                                            <th scope="col">Order Total</th>
+                                            <th scope="col">status</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {% for order in orders %}
+
+                                        <tr>
+                                            <th scope="row"><a class="text-decoration-none text-dark" href="">#{{ order.id }}</a></th>
+                                            <td>{{ order.date_ordered }}</td>
+                                            <td>{{ order.full_name }}</td>
+                                            <td>{{ order.amount_paid }}</td>
+                                            <td>Not Daliverd</td>
+                                            <td>
+                                                <ol>
+                                                    {% for item in order.orderitem_set.all %}
+                                                    <li>
+                                                        <a href="{% url 'product' item.product.id %}">{{ item.product.name }}</a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ol>
+                                            </td>
+                                        </tr>
+
+                                        {% endfor %}
+                                        
+
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {% endblock %}

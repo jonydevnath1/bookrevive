@@ -1,0 +1,116 @@
+<!-- Header & Footer content -->
+{% extends 'payment/admin_base.html' %}
+
+        {% block content %}
+
+        <div class="container mt-5">
+          <!-- Order Header Section -->
+          <div class="order-header">
+              <h4>Order #{{ order.id }}</h4>
+              <div>
+                  <span class="badge badge-paid">
+                      {% if order.payment_status == 'Paid' %}
+                          Paid
+                      {% else %}
+                          Unpaid
+                      {% endif %}
+                  </span>
+                  <span>
+                      {% if order.date_shipped %}
+                          {{ order.date_shipped|date:"M d, Y, H:i" }}
+                      {% else %}
+                          {{ order.date_ordered|date:"M d, Y, H:i" }}
+                      {% endif %}
+                  </span>
+              </div>
+          </div>
+      
+          <div class="row">
+            <!-- Order Details Section -->
+            <div class="col-lg-8">
+                <div class="order-summary mb-4">
+                    <h6>Order details</h6>
+                    <div class="order-details">
+                    {% for item in items %}
+                        <!-- Each Product -->
+                        <div class="product-info mb-3 d-flex justify-content-between">
+                            <div>
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" width="50" height="50">
+                                <span class="ms-4">{{ item.product.name }}</span>
+                            </div>
+                            <div>
+                                <span>TK.{{ item.price }}</span> x {{ item.quantity }} = <strong>TK.{{ item.total_price }}</strong>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                        <!-- Order Summary -->
+                        <div class="mt-4">
+                            <div class="d-flex justify-content-between">
+                                <span>Shipping fee:</span>
+                                <span>TK.60.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <strong>Total:</strong>
+                                <strong>TK.{{ order.amount_paid }}</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+            <!-- Customer Information Section -->
+            <div class="col-lg-4">
+                <div class="customer-info">
+                    <h6>Customer</h6>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="ms-3">
+                            <strong>{{ order.full_name }}</strong><br>
+                            <!-- Optionally show the number of orders by the user -->
+                            {% if order.user %}
+                                {{ order.user.order_set.count }} orders
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Contact info</strong> <br>
+                        <span>{{ order.email }}</span><br>
+                        <span>{{ order.phone }}</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Shipping address</strong> <br>
+                        <span>{{ order.shipping_address }}</span>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Billing address</strong> <br>
+                        <span>{{ order.shipping_address }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- Shipping Status Form -->
+        <div class="mt-4">
+            {% if not order.shipped %}
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="shipping_status" value="true">
+                <button type="submit" class="btn btn-success btn-sm">Shipped</button>
+            </form>
+            {% else %}
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="shipping_status" value="false">
+                <button type="submit" class="btn btn-danger btn-sm">Unshipped</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    
+    {% endblock %}
+
+
+
+
+
+    
