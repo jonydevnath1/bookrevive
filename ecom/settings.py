@@ -32,8 +32,8 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENVIRONMENT == "development"
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
+ALLOWED_HOSTS = ['bookrevive-production.up.railway.app', 'https://bookrevive-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['bookrevive-production.up.railway.app', 'https://bookrevive-production.up.railway.app']
 
 
 # Application definition
